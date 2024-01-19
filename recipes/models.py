@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Category(models.Model):
     name = models.CharField(max_length=65)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
 
@@ -22,7 +22,7 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updatad_at = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
-    cover = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/')
+    cover = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/', blank=True, default='')
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True
     )
