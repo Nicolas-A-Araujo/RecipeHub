@@ -1,9 +1,9 @@
 from django.test import TestCase
 from recipes.models import Category, Recipe, User
 
-class RecipeTestBase(TestCase):
+class RecipeTestBase(TestCase): 
     def setUp(self) -> None:
-        category = Category.objects.create(name='Category')
+        category = self.make_Recipe()
         author = User.objects.create(
             first_name='user',
             last_name='name',
@@ -26,3 +26,6 @@ class RecipeTestBase(TestCase):
             is_published = True,
         )
         return super().setUp()
+    
+    def make_Recipe(self):
+        return Category.objects.create(name='Category')
