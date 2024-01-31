@@ -9,8 +9,8 @@
     
     {% endif %}
     <div class="recipe-title-container">
-        <h2 class="recipe-title">{{ recipe.title }}
-            <a href="{% url "recipes:recipe" recipe.id %}">
+        <h2 class="recipe-title">
+            <a href="{% url 'recipes:recipe' recipe.id %}">
                 {{ recipe.title }}
             </a>
         </h2>
