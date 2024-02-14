@@ -47,7 +47,7 @@ def recipe(request, id):
 
 # Search view
 def search(request):
-    messages.success(request, 'Epa, voçe foi pesquisar algo e eu vi')
+    messages.error(request, 'Epa, voçe foi pesquisar algo e eu vi')
     search_term = request.GET.get('q', '').strip()
 
     if not search_term:
