@@ -3,7 +3,6 @@ from django.http.response import Http404
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.db.models import Q
 from utils.pagination import make_pagination
-from django.contrib import messages
 from recipes.models import Recipe
 
 PER_PAGE = int(os.environ.get('PER_PAGE', 6))
@@ -47,7 +46,6 @@ def recipe(request, id):
 
 # Search view
 def search(request):
-    messages.error(request, 'Epa, voçe foi pesquisar algo e eu vi')
     search_term = request.GET.get('q', '').strip()
 
     if not search_term:
