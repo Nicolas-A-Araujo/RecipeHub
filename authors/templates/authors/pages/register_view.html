@@ -24,12 +24,22 @@
                     </div>
                 {% endfor %}
             </div>
-
-        <div class="form-content form-content-grid">
-            <div class="form-group">
-                <button type="submit">Send</button>
+        
+            {% if form.errors %}
+            <div class="form-content form-content-grid">
+                <div class="form-group">
+                    <div class="message message-error">
+                        There are error in the form, please fix it and send again.
+                    </div>
+                </div>
             </div>
-        </div>
+            {% endif %}
+
+            <div class="form-content form-content-grid">
+                <div class="form-group">
+                    <button type="submit">Send</button>
+                </div>
+            </div>
         </form>
     </div>
 {% endblock content %}

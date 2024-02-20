@@ -50,11 +50,11 @@ class RegisterForm(forms.ModelForm):
             'password',
         ]
 
-        label = {
+        labels = {
+            'username': 'Username',
             'first_name': 'First Name',
             'last_name': 'Last Name',
-            'username': 'Username',
-            'email': 'Email',
+            'email': 'E-mail',
             'password': 'Password',
         }
         
@@ -100,3 +100,20 @@ class RegisterForm(forms.ModelForm):
             )
 
         return data
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        password2 = cleaned_data.get('password2')
+
+        if password != password2:
+            password_confirmation_error = ValidationError(
+                'The passwords must be equal',
+                code='invalid'
+            )
+            raise ValidationError({
+                'password': password_confirmation_error,
+                'password2': password_confirmation_error
+            })
+        
+        return cleaned_data
