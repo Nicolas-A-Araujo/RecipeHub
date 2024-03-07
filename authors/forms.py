@@ -96,8 +96,10 @@ class RegisterForm(forms.ModelForm):
         exists = User.objects.filter(email=email).exists()
 
         if exists:
-            raise ValidationError('User e-mail is already in use', code='invalid')
-
+            raise ValidationError(
+                'User e-mail is already in use', code='invalid',
+            )
+    
         return email
 
     def clean(self):
